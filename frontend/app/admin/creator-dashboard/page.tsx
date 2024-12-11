@@ -3,6 +3,11 @@
 import Link from "next/link";
 import Image from 'next/image';
 import  background from '../../../assets/Rectangle 9670.png'
+import { FiUpload } from "react-icons/fi";
+import { LuPenTool } from "react-icons/lu";
+import { RiContactsBookUploadLine } from "react-icons/ri";
+import { coursesData } from "@/mock data/coursesData";
+import CoursesCard from "@/components/Cards/CoursesCard";
 
 export default function CreatorDashboard() {
     return (
@@ -16,30 +21,52 @@ export default function CreatorDashboard() {
                 />
             </div>
 
-            <div className='w-full'>
-                <div className="flex gap-3 max-lg:grid max-lg:w-full">
-                    <div className='shadow-md rounded-lg border w-[50%] max-lg:w-full grid gap-4 py-5 px-6' >
-                        <div className="w-full h-[10rem] grid gap-4">
-                            <div className="w-full border rounded-md"></div>
-                            <div className="w-full border rounded-md"></div>
-                        </div>
-                        <div className="flex w-full justify-between font-semibold text-[0.9rem]">
-                            <Link href={ `/super-admin/content-management`}>Manage Forum </Link>
-                            <Link href={ `/super-admin/content-management`}>View All</Link>
-                        </div>
+            <div className="w-full flex items-center gap-4 h-[15rem] mb-6">
+                <Link href={`/admin/creator-dashboard`} className="flex items-center justify-center  h-full w-full bg-[#F7F7F7] shadow-sm" >
+                    <div className="flex flex-col items-center gap-4">
+                        <FiUpload  className="text-5xl"/>
+                        <h3 className="text-[0.97rem] font-bold">Upload Course</h3>
                     </div>
-                    <div className='shadow-md rounded-lg border w-[50%] max-lg:w-full grid gap-4 py-5 px-6' >
-                        <div className="w-[76%] h-[10rem] flex gap-4">
-                            <div className="h-full w-full border rounded-md"></div>
-                            <div className="h-full w-full border rounded-md"></div>
-                        </div>
-                        <div className="flex w-full justify-between font-semibold text-[0.9rem]">
-                            <Link href={ `/super-admin/content-management`}>Manage Library </Link>
-                            <Link href={ `/super-admin/content-management`}>View All</Link>
-                        </div>
+                </Link>
+                <Link href={`/admin/creator-dashboard`} className="flex items-center justify-center  h-full w-full bg-[#F7F7F7] shadow-sm">
+                    <div className="flex flex-col items-center gap-4">
+                        <RiContactsBookUploadLine className="text-5xl"/>
+                        <h3 className="text-[0.97rem] font-bold">Upload E-book</h3>
                     </div>
-                </div>
-            </div>   
+                </Link>
+                <Link href={`/admin/creator-dashboard`} className="flex items-center justify-center  h-full w-full bg-[#F7F7F7] shadow-sm">
+                    <div className="flex flex-col items-center gap-4">
+                        <LuPenTool  className="text-5xl"/>
+                        <h3 className="text-[0.97rem] font-bold">Write a Blog</h3>
+                    </div>
+                </Link>
+            </div>
+
+            <div className="flex gap-2 items-center w-full">
+                <h3 className="text-[1.05rem] font-bold w-[6.5rem]">My Courses</h3>
+                <div className="h-0.5 w-full bg-black"></div>
+            </div>
+
+            <div className="py-6 flex gap-4 w-full">
+                {
+                    coursesData.map((data, index) => (
+                        <div key={index} >
+                            <CoursesCard video={data.video} title={data.title} name={data.name} time={data.time}  />
+                        </div>
+                    ))
+                }
+            </div>
+            
+            <div className="flex gap-2 items-center w-full">
+                <h3 className="text-[1.05rem] font-bold w-[6.5rem]">My Books</h3>
+                <div className="h-0.5 w-full bg-black"></div>
+            </div>
+
+            <div className="flex gap-2 items-center w-full">
+                <h3 className="text-[1.05rem] font-bold w-[6.5rem]">My Articles</h3>
+                <div className="h-0.5 w-full bg-black"></div>
+            </div>
+
         </>
     )
 }
