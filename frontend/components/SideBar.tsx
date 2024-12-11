@@ -29,7 +29,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar }) => {
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         md:relative md:translate-x-0 md:w-auto md:flex
       `}>
-        <div className='flex flex-col gap-10 w-full max-sm:w-[50vw] max-md:text-sm'>
+        <div className='flex flex-col gap-6 w-full max-sm:w-[50vw] max-md:text-sm'>
           <div className='flex justify-between items-center md:hidden'>
             <Image
               src={logo}  
@@ -47,7 +47,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar }) => {
             className='w-[10rem] hidden md:block'
           />
           
-          <div className='flex flex-col gap-5 text-[0.95rem]'>
+          <div className='flex flex-col gap-3 text-[0.95rem]'>
             <Link 
               href={`/super-admin/dashboard`} 
               className='hover:bg-gray-100 p-2 rounded'

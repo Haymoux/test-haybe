@@ -31,11 +31,6 @@ const AcquisitionChart: React.FC = () => {
     xaxis: {
       categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun'],
     },
-    yaxis: {
-      title: {
-        text: '$ (thousands)'
-      }
-    },
     fill: {
       opacity: 1
     },
