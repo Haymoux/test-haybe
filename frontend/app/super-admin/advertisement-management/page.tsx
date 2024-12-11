@@ -11,7 +11,7 @@ export default function AdvertisementManagement() {
                 key={index}
                 title={card.title}
                 description={card.description}
-                image={card.image}
+                image={card.image ? card.image : ''}
                 />
             ))}
         </div>
