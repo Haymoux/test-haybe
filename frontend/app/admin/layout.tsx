@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <main className="h-screen w-full font-inter">
         <AdminNav />
-          <div className="overflow-y-auto mx-20 max-sm:mx-4 my-2 pb-12">
+          <div className="overflow-y-auto px-20 max-sm:mx-4 my-2 pb-12">
             {children}
           </div>
         <AdminFooter />

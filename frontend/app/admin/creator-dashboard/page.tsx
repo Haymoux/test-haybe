@@ -25,13 +25,13 @@ export default function CreatorDashboard() {
             </div>
 
             <div className="w-full flex items-center gap-4 h-[15rem] mb-6">
-                <Link href={`/admin/creator-dashboard`} className="flex items-center justify-center  h-full w-full bg-[#F7F7F7] shadow-sm" >
+                <Link href={`/admin/creator-dashboard/upload-video`} className="flex items-center justify-center  h-full w-full bg-[#F7F7F7] shadow-sm" >
                     <div className="flex flex-col items-center gap-4">
                         <FiUpload  className="text-5xl"/>
                         <h3 className="text-[0.97rem] font-bold">Upload Course</h3>
                     </div>
                 </Link>
-                <Link href={`/admin/creator-dashboard`} className="flex items-center justify-center  h-full w-full bg-[#F7F7F7] shadow-sm">
+                <Link href={`/admin/creator-dashboard/upload-book`} className="flex items-center justify-center  h-full w-full bg-[#F7F7F7] shadow-sm">
                     <div className="flex flex-col items-center gap-4">
                         <RiContactsBookUploadLine className="text-5xl"/>
                         <h3 className="text-[0.97rem] font-bold">Upload E-book</h3>
