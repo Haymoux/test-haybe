@@ -21,8 +21,8 @@ const BookCard: React.FC<BookCardProps> = ({ image, desc, title }) => {
                 className='border-4'
              />
             <div className="flex flex-col items-start px-3 pt-4 pb-3 rounded-b-lg gap-2">
-                <h2 className='text-lg font-bold'>{title}</h2>
-                <h5 className='text-xs'>{desc}</h5>
+                <h2 className='text-[1.1rem] font-bold'>{title}</h2>
+                <h5 className='text-xs text-gray-500 font-medium'>{desc}</h5>
             </div>
         </div>
         <div className='flex gap-2'>
