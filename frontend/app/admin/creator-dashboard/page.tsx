@@ -8,6 +8,9 @@ import { LuPenTool } from "react-icons/lu";
 import { RiContactsBookUploadLine } from "react-icons/ri";
 import { coursesData } from "@/mock data/coursesData";
 import CoursesCard from "@/components/Cards/CoursesCard";
+import { bookData } from "@/mock data/bookData";
+import BookCard from "@/components/Cards/BookCard";
+import { articlesData } from "@/mock data/articlesData";
 
 export default function CreatorDashboard() {
     return (
@@ -47,7 +50,7 @@ export default function CreatorDashboard() {
                 <div className="h-0.5 w-full bg-black"></div>
             </div>
 
-            <div className="py-6 flex gap-4 w-full">
+            <div className="py-6 flex gap-4 w-full items-center">
                 {
                     coursesData.map((data, index) => (
                         <div key={index} >
@@ -62,9 +65,29 @@ export default function CreatorDashboard() {
                 <div className="h-0.5 w-full bg-black"></div>
             </div>
 
+            <div className="py-6 flex gap-4 w-full items-center">
+                {
+                    bookData.map((data, index) => (
+                        <div key={index} >
+                            <BookCard image={data.image} title={data.title} desc={data.desc}  />
+                        </div>
+                    ))
+                }
+            </div>
+
             <div className="flex gap-2 items-center w-full">
                 <h3 className="text-[1.05rem] font-bold w-[6.5rem]">My Articles</h3>
                 <div className="h-0.5 w-full bg-black"></div>
+            </div>
+
+            <div className="py-6 flex gap-4 w-full items-center">
+                {
+                    articlesData.map((data, index) => (
+                        <div key={index} >
+                            <BookCard image={data.image} title={data.title} desc={data.desc}  />
+                        </div>
+                    ))
+                }
             </div>
 
         </>
