@@ -1,5 +1,6 @@
 import { RecentVideoCard } from '@/components/Cards/RecentVideoCard'
 import { recentVideoData } from '@/mock data/recentVideoData'
+import Link from 'next/link'
 import React from 'react'
 import { FiUpload } from 'react-icons/fi'
 import { TiArrowSortedDown } from 'react-icons/ti'
@@ -7,7 +8,17 @@ import { TiArrowSortedDown } from 'react-icons/ti'
 export default function UploadBook() {
   return (
     <div className=''>
-        <h5 className='text-xs mb-4 text-gray-600'>Homepage &gt; Creator Dashboard &gt; Upload Book </h5>
+        <h5 className='text-xs mb-4 text-gray-600 flex gap-1'>
+          <Link href={`/`}>
+            Homepage
+          </Link>
+           &gt;
+          <Link href={`/admin/creator-dashboard`}>
+            Creator Dashboard
+          </Link> 
+           &gt;
+          Upload Book
+        </h5>  
         <div className='py-8'>
 
           <h2 className='font-bold text-[1.3rem]'>Book Name</h2>

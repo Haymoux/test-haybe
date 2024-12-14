@@ -1,4 +1,5 @@
 import TextEditor from '@/helper/TextEditor'
+import Link from 'next/link'
 import React from 'react'
 import { AiOutlinePicture } from 'react-icons/ai'
 import { FaPen } from 'react-icons/fa'
@@ -8,7 +9,17 @@ import { TiArrowSortedDown } from 'react-icons/ti'
 export default function UploadBlog() {
   return (
     <div className=''>
-        <h5 className='text-xs mb-4 text-gray-600'>Homepage &gt; Creator Dashboard &gt; Upload Blog </h5>
+        <h5 className='text-xs mb-4 text-gray-600 flex gap-1'>
+          <Link href={`/`}>
+            Homepage
+          </Link>
+           &gt;
+          <Link href={`/admin/creator-dashboard`}>
+            Creator Dashboard
+          </Link> 
+           &gt;
+          Upload Blog 
+        </h5>
         <div className='py-8'>
 
           <h2 className='font-bold text-[1.3rem]'>Blog Name</h2>
