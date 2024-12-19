@@ -2,7 +2,7 @@
 
 import React from 'react';
 import dynamic from 'next/dynamic';
-import revenueSource, { Revenue } from '@/mock data/revenueSource';
+import revenueSource from '@/mock data/revenueSource';
 // import ReactECharts from 'echarts-for-react';
 
 const ReactECharts = dynamic(() => import('echarts-for-react'), { ssr: false });

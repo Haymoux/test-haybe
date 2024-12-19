@@ -1,5 +1,5 @@
-import { RecentVideoCard } from '@/components/Cards/RecentVideoCard'
-import { recentVideoData } from '@/mock data/recentVideoData'
+// import { RecentVideoCard } from '@/components/Cards/RecentVideoCard'
+// import { recentVideoData } from '@/mock data/recentVideoData'
 import Link from 'next/link'
 import React from 'react'
 import { FiUpload } from 'react-icons/fi'

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import React from 'react'
-import { AiFillInstagram } from 'react-icons/ai';
+// import { AiFillInstagram } from 'react-icons/ai';
 import { BsTwitterX } from 'react-icons/bs';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { IoLogoYoutube } from 'react-icons/io';

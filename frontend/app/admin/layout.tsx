@@ -2,9 +2,9 @@
 
 import { AdminFooter } from "@/components/AdminFooter";
 import { AdminNav } from "@/components/AdminNav";
-import { NavBar } from "@/components/NavBar";
-import { SideBar } from "@/components/SideBar";
-import { useState } from "react";
+// import { NavBar } from "@/components/NavBar";
+// import { SideBar } from "@/components/SideBar";
+// import { useState } from "react";
 
 export default function RootLayout({
   children,

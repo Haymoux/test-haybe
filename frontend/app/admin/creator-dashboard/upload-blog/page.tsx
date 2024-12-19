@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import { AiOutlinePicture } from 'react-icons/ai'
 import { FaPen } from 'react-icons/fa'
-import { FiUpload } from 'react-icons/fi'
+// import { FiUpload } from 'react-icons/fi'
 import { TiArrowSortedDown } from 'react-icons/ti'
 
 export default function UploadBlog() {
