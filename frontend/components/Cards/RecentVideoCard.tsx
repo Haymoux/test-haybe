@@ -23,7 +23,7 @@ export const RecentVideoCard:React.FC<CardProps> = ({image, title, desc}) => {
                         <FaPencilAlt />
                     </div>
                 </div>
-                <h4 className="text-[0.65rem] text-wrap max-md:w-[50vw] max-md:line-clamp-4">{desc}</h4>
+                <h4 className="text-[0.65rem] text-wrap max-md:w-[50vw] max-lg:line-clamp-4">{desc}</h4>
         </div>
     </div>
   )
