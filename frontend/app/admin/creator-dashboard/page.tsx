@@ -14,8 +14,8 @@ import { articlesData } from "@/mock data/articlesData";
 
 export default function CreatorDashboard() {
     return (
-        <>
-            <h5 className='text-xs mb-4 text-gray-600'>Homepage &gt; Creator Dashboard </h5>
+        <div>
+            <h5 className='text-xs mb-4 max-md:mb-2 text-gray-600'>Homepage &gt; Creator Dashboard </h5>
             <div className="w-full">
                 <Image 
                     src={background}
@@ -24,33 +24,33 @@ export default function CreatorDashboard() {
                 />
             </div>
 
-            <div className="w-full flex items-center gap-4 h-[15rem] mb-6">
+            <div className="w-full flex items-center gap-4 max-md:gap-2 h-[15rem] max-md:h-32 mb-6">
                 <Link href={`/admin/creator-dashboard/upload-video`} className="flex items-center justify-center  h-full w-full bg-[#F7F7F7] shadow-sm" >
-                    <div className="flex flex-col items-center gap-4">
-                        <FiUpload  className="text-5xl"/>
-                        <h3 className="text-[0.97rem] font-bold">Upload Course</h3>
+                    <div className="flex flex-col items-center gap-4 max-md:gap-2">
+                        <FiUpload  className="text-5xl max-md:text-3xl"/>
+                        <h3 className="text-[0.97rem] text-center  max-md:text-[0.82rem] font-bold">Upload Course</h3>
                     </div>
                 </Link>
                 <Link href={`/admin/creator-dashboard/upload-book`} className="flex items-center justify-center  h-full w-full bg-[#F7F7F7] shadow-sm">
-                    <div className="flex flex-col items-center gap-4">
-                        <RiContactsBookUploadLine className="text-5xl"/>
-                        <h3 className="text-[0.97rem] font-bold">Upload E-book</h3>
+                    <div className="flex flex-col items-center gap-4 max-md:gap-2">
+                        <RiContactsBookUploadLine className="text-5xl max-md:text-3xl"/>
+                        <h3 className="text-[0.97rem] text-center  max-md:text-[0.82rem] font-bold">Upload E-book</h3>
                     </div>
                 </Link>
                 <Link href={`/admin/creator-dashboard/upload-blog`} className="flex items-center justify-center  h-full w-full bg-[#F7F7F7] shadow-sm">
-                    <div className="flex flex-col items-center gap-4">
-                        <LuPenTool  className="text-5xl"/>
-                        <h3 className="text-[0.97rem] font-bold">Write a Blog</h3>
+                    <div className="flex flex-col items-center gap-4 max-md:gap-2">
+                        <LuPenTool  className="text-5xl max-md:text-3xl"/>
+                        <h3 className="text-[0.97rem] text-center  max-md:text-[0.82rem] font-bold">Write a Blog</h3>
                     </div>
                 </Link>
             </div>
 
             <div className="flex gap-2 items-center w-full">
-                <h3 className="text-[1.05rem] font-bold w-[6.5rem]">My Courses</h3>
+                <h3 className="text-[1.05rem] font-bold w-[6.5rem] max-md:w-[8rem]">My Courses</h3>
                 <div className="h-0.5 w-full bg-black"></div>
             </div>
 
-            <div className="py-6 flex gap-4 w-full items-center">
+            <div className="py-6 flex gap-4 max-md:gap-2 max-md:mb-2 w-full overflow-x-auto items-center">
                 {
                     coursesData.map((data, index) => (
                         <div key={index} >
@@ -65,7 +65,7 @@ export default function CreatorDashboard() {
                 <div className="h-0.5 w-full bg-black"></div>
             </div>
 
-            <div className="py-6 flex gap-4 w-full items-center">
+            <div className="py-6 flex gap-4 max-md:gap-2  max-md:mb-2 overflow-x-auto w-full items-center">
                 {
                     bookData.map((data, index) => (
                         <div key={index} >
@@ -76,11 +76,11 @@ export default function CreatorDashboard() {
             </div>
 
             <div className="flex gap-2 items-center w-full">
-                <h3 className="text-[1.05rem] font-bold w-[6.5rem]">My Articles</h3>
+                <h3 className="text-[1.05rem] font-bold w-[6.5rem] max-md:w-[8rem]">My Articles</h3>
                 <div className="h-0.5 w-full bg-black"></div>
             </div>
 
-            <div className="py-6 flex gap-4 w-full items-center">
+            <div className="py-6 flex gap-4 max-md:gap-2  max-md:mb-2 overflow-x-auto w-full items-center">
                 {
                     articlesData.map((data, index) => (
                         <div key={index} >
@@ -89,7 +89,6 @@ export default function CreatorDashboard() {
                     ))
                 }
             </div>
-
-        </>
+    </div>
     )
 }
