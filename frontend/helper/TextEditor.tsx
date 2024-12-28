@@ -28,7 +28,7 @@ const TextEditor: React.FC = () => {
     subscript: false,
     superscript: false
   });
-  const [fontSize, setFontSize] = useState(16);
+  const [fontSize, setFontSize] = useState(14);
 
   // Function to apply text formatting
   const applyFormat = (command: string) => {
@@ -158,7 +158,7 @@ const TextEditor: React.FC = () => {
           >
             <FaTextWidth />
           </button>
-          <span className="text-sm">{fontSize}px</span>
+          <span className=" text-[0.86rem]">{fontSize}px</span>
           <button
             title="Increase Font Size"
             className="p-2 rounded-md hover:bg-gray-200 focus:outline-none"
@@ -206,7 +206,7 @@ const TextEditor: React.FC = () => {
         ref={editorRef}
         contentEditable
         // placeholder="Write your ideas here..."
-        className={`w-full min-h-[44vh] border border-gray-300 rounded-md p-4 bg-gray-50 focus:outline-none ${isEmpty ? 'text-gray-400' : ''}`}
+        className={`w-full min-h-[44vh] border border-gray-300 rounded-md p-4 bg-gray-50 text-[0.86rem] focus:outline-none ${isEmpty ? 'text-gray-400' : ''}`}
         onInput={handleInput}
         onFocus={handleFocus}
         onBlur={handleBlur}

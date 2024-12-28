@@ -10,15 +10,15 @@ export default function UploadVideo() {
   return (
     <div className=''>
         <h5 className='text-[0.7rem] mb-3 max-md:mb-2 text-gray-600 flex gap-1'>
-          <Link href={`/`} className='hover:text-[#6694c2] hover:font-medium transition-colors duration-200 peer'>
+          <Link href={`/`} className='hover:text-[#6694c2] hover:font-medium transition-colors duration-500 peer'>
             Homepage
           </Link>
            &gt;
-          <Link href={`/admin/creator-dashboard`} className='hover:text-[#6694c2] hover:font-medium transition-colors duration-200 peer'>
+          <Link href={`/admin/creator-dashboard`} className='hover:text-[#6694c2] hover:font-medium transition-colors duration-500 peer'>
             Creator Dashboard
           </Link> 
            &gt;
-           <span className='text-[#6694c2] font-medium transition-colors duration-200 peer-hover:text-gray-700'>
+           <span className='text-[#6694c2] font-medium transition-colors duration-500 peer-hover:text-gray-700'>
             Upload Video
            </span>
         </h5>
@@ -54,9 +54,10 @@ export default function UploadVideo() {
                     ))
                 }
               </div>
-              <button className='bg-[#1B3664] max-md:mt-4 p-2 text-white flex gap-4 items-center justify-center'>
+              <button className='bg-[#1B3664] max-md:mt-4 p-2 text-white flex gap-2 items-center justify-center'>
                 <FiUpload className="text-lg"/>
-                <span>Upload Another Video</span>
+                {/* <UploadIcon /> */}
+                <span className='text-[0.86rem]'>Upload Another Video</span>
               </button>
             </div>
           </div>
