@@ -66,6 +66,11 @@ const QuestionsAccordion: React.FC<QuestionsAccordionProps> = ({
                           onClick={(e: React.MouseEvent) => {
                             e.stopPropagation();
                             handleEdit(question);
+                            // Additional scroll behavior for cases where window.scrollTo might not work
+                            document.body.scrollIntoView({ 
+                              behavior: 'smooth',
+                              block: 'start'
+                            });
                           }}
                           className="text-[#1B3664] hover:text-blue-800"
                           title='edit question'
@@ -95,7 +100,7 @@ const QuestionsAccordion: React.FC<QuestionsAccordionProps> = ({
                             </svg>
 
                         </button>
-                      </div>
+                  </div>
                 </button>
                 
                 <div

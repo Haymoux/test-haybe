@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import QuestionsAccordion from '@/components/QuestionsAccordion';
+import QuestionsAccordion from '@/components/Accordion/QuestionsAccordion';
 
 interface Question {
   id: number;
@@ -117,9 +117,67 @@ export default function UploadHOSAssessmentQuestions() {
   };
 
   const handleSave = () => {
+    // Check if the question is empty/unchanged from initial state
+    const isQuestionEmpty = 
+      currentQuestion.question.trim() === '' && 
+      currentQuestion.answers.every(answer => answer.trim() === '') &&
+      currentQuestion.correctAnswers.length === 0;
+  
+    if (isQuestionEmpty) {
+      alert('Please add a question before saving');
+      return;
+    }
+  
+    // Validate that we have a question
+    if (!currentQuestion.question.trim()) {
+      alert('Please enter a question');
+      return;
+    }
+  
+    // Validate that we have at least one answer
+    if (!currentQuestion.answers.some(answer => answer.trim())) {
+      alert('Please enter at least one answer');
+      return;
+    }
+  
+    // Validate that we have selected at least one correct answer
+    if (currentQuestion.correctAnswers.length === 0) {
+      alert('Please select at least one correct answer');
+      return;
+    }
+  
+    // Check if this question already exists in the questions array
+    const questionExists = questions.some(q => 
+      q.id === currentQuestion.id && !editingQuestion
+    );
+  
+    if (questionExists) {
+      alert('This question has already been saved. Click "Add question" to create a new question.');
+      return;
+    }
+  
+    // If editing, update the existing question
+    if (editingQuestion) {
+      setQuestions(prev => prev.map(q => 
+        q.id === editingQuestion.id ? currentQuestion : q
+      ));
+      setEditingQuestion(null);
+    } else {
+      // Generate a new ID based on the highest existing ID + 1
+      const newId = Math.max(0, ...questions.map(q => q.id)) + 1;
+      const newQuestion = {
+        ...currentQuestion,
+        id: newId
+      };
+      
+      // Add the current question to the questions array
+      setQuestions(prev => [...prev, newQuestion]);
+    }
+  
+    // Show success modal
     setShowSuccessModal(true);
   };
-
+  
   const handleDelete = (id: number) => {
     setQuestionToDelete(id);
     setShowDeleteModal(true);
