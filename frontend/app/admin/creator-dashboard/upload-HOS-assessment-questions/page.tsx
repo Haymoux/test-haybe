@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import QuestionsAccordion from '@/components/QuestionsAccordion';
 
 interface Question {
   id: number;
@@ -28,24 +29,24 @@ const CustomInput: React.FC<CustomInputProps> = ({ type, checked, onChange, clas
         onChange={onChange}
         className="peer absolute w-full h-full opacity-0 cursor-pointer"
       />
-      <div className="w-full h-full border-2 bg-[#F7F7F7] rounded-full peer-checked:border-none peer-hover:border-gray-400 transition-colors duration-200" />
-      {checked && (
-        <div className="absolute inset-0 bg-[#2CD341] rounded-full flex items-center justify-center">
-          <svg 
-            className="w-4 h-4 text-[#222222]" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth="2" 
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-        </div>
-      )}
+        <div className="w-full h-full border-2 bg-[#F7F7F7] rounded-full peer-checked:border-none peer-hover:border-gray-400 transition-colors duration-200" />
+        {checked && (
+            <div className="absolute inset-0 bg-[#2CD341] rounded-full flex items-center justify-center">
+                <svg 
+                    className="w-4 h-4 text-[#222222]" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                >
+                    <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth="2" 
+                    d="M5 13l4 4L19 7"
+                    />
+                </svg>
+            </div>
+        )}
     </div>
   );
 
@@ -170,13 +171,6 @@ export default function UploadHOSAssessmentQuestions() {
             {currentQuestion.answers.map((answer, index) => (
               <div key={index} className="flex items-center gap-2 mb-2 sm:mb-3">
                 <div className="flex-shrink-0">
-                  {/* <input
-                    type={isMultipleAnswer ? "checkbox" : "radio"}
-                    checked={currentQuestion.correctAnswers.includes(index)}
-                    onChange={() => handleCorrectAnswerToggle(index)}
-                    title='answer'
-                    className="w-4 h-4 sm:w-5 sm:h-5 cursor-pointer"
-                  /> */}
                     <CustomInput
                         type={isMultipleAnswer ? "checkbox" : "radio"}
                         checked={currentQuestion.correctAnswers.includes(index)}
@@ -211,7 +205,7 @@ export default function UploadHOSAssessmentQuestions() {
           </div>
 
           {/* Previous Questions List */}
-          {questions.length > 0 && (
+          {/* {questions.length > 0 && (
             <div className="border-t pt-6">
               <h3 className="text-lg font-semibold mb-4">Previous Questions</h3>
               <div className="space-y-4">
@@ -255,7 +249,12 @@ export default function UploadHOSAssessmentQuestions() {
                 ))}
               </div>
             </div>
-          )}
+          )} */}
+          <QuestionsAccordion 
+            questions={questions}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+            />
         </div>
       </div>
 
@@ -274,28 +273,40 @@ export default function UploadHOSAssessmentQuestions() {
             </div>
             <p className="mb-4 text-sm sm:text-base">Please Select the option below</p>
             <div className="space-y-3 mb-4">
-              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors duration-300">
-                <input
+              <button className="flex w-full items-center gap-3 p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors duration-300" onClick={() => setIsMultipleAnswer(false)}>
+                {/* <input
                   type="radio"
                   name="questionType"
                   checked={!isMultipleAnswer}
                   title='answer'
                   onChange={() => setIsMultipleAnswer(false)}
                   className="w-4 h-4 sm:w-5 sm:h-5"
+                  /> */}
+                <CustomInput 
+                    type='radio'
+                    checked={!isMultipleAnswer}
+                    onChange={() => setIsMultipleAnswer(false)}
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                 />
-                <span className="text-sm sm:text-base">Single answer</span>
-              </div>
-              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors duration-300">
-                <input
+                <span className="text-sm font-medium sm:text-base">Single answer</span>
+              </button>
+              <button className="flex items-center w-full gap-3 p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors duration-300" onClick={() => setIsMultipleAnswer(true)}>
+                {/* <input
                   type="radio"
                   name="questionType"
                   checked={isMultipleAnswer}
                   onChange={() => setIsMultipleAnswer(true)}
                   title='answer'
                   className="w-4 h-4 sm:w-5 sm:h-5"
+                  /> */}
+                <CustomInput 
+                    type='radio'
+                    checked={isMultipleAnswer}
+                    onChange={() => setIsMultipleAnswer(true)}
+                    className="w-4 h-4 sm:w-5 sm:h-5"
                 />
-                <span className="text-sm sm:text-base">Multiple answers</span>
-              </div>
+                <span className="text-sm font-medium sm:text-base">Multiple answers</span>
+              </button>
             </div>
             <button
               onClick={() => {
@@ -315,26 +326,28 @@ export default function UploadHOSAssessmentQuestions() {
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg p-4 sm:p-6 w-full max-w-md">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg sm:text-xl font-semibold">Delete question</h2>
-              <button 
-                onClick={() => setShowDeleteModal(false)} 
-                className="text-gray-500 hover:text-gray-700 text-2xl"
-              >
-                ×
-              </button>
+            <div className="flex justify-end items-center">
+                <button 
+                    onClick={() => setShowDeleteModal(false)} 
+                    className="text-gray-500 hover:text-gray-700 hover:text-4xl transition-transform duration-500 hover:shadow-lg hover:border-none border rounded-full w-10 h-10 text-3xl"
+                >
+                    ×
+                </button>
             </div>
-            <p className="mb-6 text-center text-sm sm:text-base">Are you sure you want to delete this question?</p>
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex justify-center items-center mb-4">
+              <h2 className="text-lg sm:text-[1.55rem] font-bold">Delete question</h2>
+            </div>
+            <p className="mb-6 text-center font-normal text-sm sm:text-[0.92rem]">Are you sure you want to <br /> delete this question?</p>
+            <div className="flex flex-col mb-6 sm:flex-row gap-3">
               <button
                 onClick={() => setShowDeleteModal(false)}
-                className="flex-1 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 text-sm sm:text-base transition-colors duration-300"
+                className="flex-1 py-3 bg-[#1B3664] text-white rounded-md hover:bg-blue-800 text-sm sm:text-[0.94rem] transition-colors duration-300"
               >
                 No, cancel
               </button>
               <button
                 onClick={confirmDelete}
-                className="flex-1 py-2 border border-blue-900 text-blue-900 rounded-md hover:bg-blue-50 text-sm sm:text-base transition-colors duration-300"
+                className="flex-1 py-3 border border-[#1B3664] text-[#1B3664] rounded-md hover:bg-red-100 hover:text-red-600 hover:border-red-500 text-sm sm:text-[0.94rem] transition-colors duration-300"
               >
                 Yes, delete
               </button>
