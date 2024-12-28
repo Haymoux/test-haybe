@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-interface Answer {
-  id: string;
-  text: string;
-}
+// interface Answer {
+//   id: string;
+//   text: string;
+// }
 
 interface Question {
     id: number;
