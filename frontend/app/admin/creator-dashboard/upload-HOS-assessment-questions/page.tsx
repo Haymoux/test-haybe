@@ -10,6 +10,45 @@ interface Question {
   correctAnswers: number[];
 }
 
+interface CustomInputProps {
+    type: 'radio' | 'checkbox';
+    checked: boolean;
+    onChange: () => void;
+    className?: string;
+  }
+
+const CustomInput: React.FC<CustomInputProps> = ({ type, checked, onChange, className = '' }) => (
+    <div 
+      className={`relative w-[1.35rem] h-[1.35rem] flex-shrink-0 ${className}`}
+    >
+      <input
+        type={type}
+        checked={checked}
+        title='set as answer'
+        onChange={onChange}
+        className="peer absolute w-full h-full opacity-0 cursor-pointer"
+      />
+      <div className="w-full h-full border-2 bg-[#F7F7F7] rounded-full peer-checked:border-none peer-hover:border-gray-400 transition-colors duration-200" />
+      {checked && (
+        <div className="absolute inset-0 bg-[#2CD341] rounded-full flex items-center justify-center">
+          <svg 
+            className="w-4 h-4 text-[#222222]" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth="2" 
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+      )}
+    </div>
+  );
+
 export default function UploadHOSAssessmentQuestions() {
   // Previous state declarations remain the same...
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -96,28 +135,29 @@ export default function UploadHOSAssessmentQuestions() {
   return (
     <div className="w-full min-h-screen px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb - Made responsive with flexible text sizing */}
-        <h5 className="text-[0.7rem] sm:text-sm mb-3 max-md:mb-2 text-gray-600 flex flex-wrap gap-1 items-center">
-            <Link href="/" className="hover:text-[#6694c2] hover:font-medium transition-colors duration-500 peer whitespace-nowrap">
+        <h5 className="sm:text-sm mb-3 max-md:mb-2 text-gray-600 flex flex-wrap gap-1 items-center">
+            <Link href="/" className="hover:text-[#6694c2] text-[0.7rem] hover:font-medium transition-colors duration-500 peer whitespace-nowrap">
             Homepage
             </Link>
-            <span className="text-gray-400">&gt;</span>
-            <Link href="/admin/creator-dashboard" className="hover:text-[#6694c2] hover:font-medium transition-colors duration-500 peer whitespace-nowrap">
+            <span className="text-gray-400  text-[0.7rem]">&gt;</span>
+            <Link href="/admin/creator-dashboard" className="hover:text-[#6694c2] text-[0.7rem] hover:font-medium transition-colors duration-500 peer whitespace-nowrap">
             Creator Dashboard
             </Link>
-            <span className="text-gray-400">&gt;</span>
-            <span className="text-[#6694c2] font-medium transition-colors duration-500 peer-hover:text-gray-700 whitespace-normal">
+            <span className="text-gray-400  text-[0.7rem]">&gt;</span>
+            <span className="text-[#6694c2] font-medium text-[0.7rem] transition-colors duration-500 peer-hover:text-gray-700 whitespace-normal">
             Upload HOS Assessment Questions
             </span>
         </h5>
-      <div className="py-4 sm:py-6 lg:py-8">
+      <div className="py-3 sm:py-4 lg:py-6">
         <div className="w-full bg-white rounded-md shadow-lg p-4 sm:p-6 lg:p-8">
           {/* Question Section */}
           <div className="mb-4 sm:mb-6">
-            <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">
+            <h3 className="text-[1.25rem] font-medium mb-2 sm:mb-3">
               {editingQuestion ? `Edit Question ${editingQuestion.id}` : `Question ${currentQuestion.id}`}
             </h3>
+            <h4 className='text-[0.875rem] font-medium my-2'>Question</h4>
             <textarea
-              className="w-full p-3 border rounded-md min-h-[100px] resize-y"
+              className="w-full p-3 border rounded-md text-[0.875rem] outline-gray-400 bg-[#F7F7F7] min-h-[60px] resize-y"
               placeholder="Enter question"
               value={currentQuestion.question}
               onChange={(e) => handleQuestionChange(e.target.value)}
@@ -126,21 +166,26 @@ export default function UploadHOSAssessmentQuestions() {
 
           {/* Answers Section */}
           <div className="mb-4 sm:mb-6">
-            <p className="mb-2 sm:mb-3 text-sm sm:text-base">Enter the answers and select the correct one</p>
+            <p className="mb-2 sm:mb-3 text-[1.05rem] font-medium">Enter the answers and select the correct one</p>
             {currentQuestion.answers.map((answer, index) => (
               <div key={index} className="flex items-center gap-2 mb-2 sm:mb-3">
                 <div className="flex-shrink-0">
-                  <input
+                  {/* <input
                     type={isMultipleAnswer ? "checkbox" : "radio"}
                     checked={currentQuestion.correctAnswers.includes(index)}
                     onChange={() => handleCorrectAnswerToggle(index)}
                     title='answer'
                     className="w-4 h-4 sm:w-5 sm:h-5 cursor-pointer"
-                  />
+                  /> */}
+                    <CustomInput
+                        type={isMultipleAnswer ? "checkbox" : "radio"}
+                        checked={currentQuestion.correctAnswers.includes(index)}
+                        onChange={() => handleCorrectAnswerToggle(index)}
+                    />
                 </div>
                 <input
                   type="text"
-                  className="w-full p-2 sm:p-3 border rounded-md text-sm sm:text-base"
+                  className="w-full p-2 sm:p-3 border rounded-md text-[0.85rem] outline-gray-400 bg-[#F7F7F7]"
                   placeholder="Enter answer"
                   value={answer}
                   onChange={(e) => handleAnswerChange(index, e.target.value)}
@@ -150,18 +195,18 @@ export default function UploadHOSAssessmentQuestions() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:justify-between mb-8">
-            <button
-              onClick={() => setShowQuestionType(true)}
-              className="px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-50 text-sm sm:text-base transition-colors duration-300"
-            >
-              + Add question
-            </button>
+          <div className="flex flex-col sm:flex-row gap-3 sm:justify-end mb-8">
             <button
               onClick={handleSave}
-              className="px-4 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 text-sm sm:text-base transition-colors duration-300"
+              className="px-6 py-2 bg-[#1B3664] text-white rounded-md hover:bg-blue-800 text-sm sm:text-[0.88rem] transition-colors duration-300"
             >
               Save
+            </button>
+            <button
+              onClick={() => setShowQuestionType(true)}
+              className="px-4 py-2 text-[#1B3664] border border-[#1B3664] rounded-md hover:bg-blue-50 text-sm sm:text-[0.88rem] transition-colors duration-300"
+            >
+              + Add question
             </button>
           </div>
 
@@ -177,7 +222,7 @@ export default function UploadHOSAssessmentQuestions() {
                       <div className="flex gap-2">
                         <button
                           onClick={() => handleEdit(question)}
-                          className="text-blue-600 hover:text-blue-800"
+                          className="text-[#1B3664] hover:text-blue-800"
                         >
                           Edit
                         </button>
