@@ -29,7 +29,7 @@ export default function CreatorDashboard() {
                     />
                 </div>
 
-                <div className="w-full grid grid-cols-4 items-center gap-4 max-md:gap-2 mb-6">
+                <div className="w-full grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 items-center gap-4 max-md:gap-2 mb-6">
                     <Link href={`/admin/creator-dashboard/upload-video`} className="flex items-center justify-center  h-[160px] w-full bg-[#F7F7F7] shadow-sm" >
                         <div className="flex flex-col items-center gap-2 max-md:gap-2">
                             {/* <FiUpload  className="text-5xl max-md:text-3xl"/> */}
