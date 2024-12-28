@@ -20,14 +20,14 @@ const BookCard: React.FC<BookCardProps> = ({ image, desc, title }) => {
                 alt={`image of ${image}`}
                 className='border-4'
              />
-            <div className="flex flex-col items-start px-3 pt-4 pb-3 rounded-b-lg gap-2">
+            <div className="flex flex-col items-start px-3 pt-4 pb-1 rounded-b-lg gap-2">
                 <h2 className='text-[1.1rem] font-bold'>{title}</h2>
                 <h5 className='text-xs text-gray-500 font-medium'>{desc}</h5>
             </div>
         </div>
         <div className='flex gap-2'>
-            <Link href={`/`} className='border-[#1B3664] border px-2 py-1 rounded-md text-[#1B3664]'>Edit Content</Link>
-            <Link href={`/`} className='bg-[#1B3664] px-2 py-1 rounded-md text-white'>Preview</Link>
+            <Link href={`/`} className='border-[#1B3664] border px-2 py-1 text-[0.88rem] rounded-md text-[#1B3664]'>Edit Content</Link>
+            <Link href={`/`} className='bg-[#1B3664] px-2 py-1 rounded-md text-[0.88rem] text-white'>Preview</Link>
         </div>
     </div>
   )

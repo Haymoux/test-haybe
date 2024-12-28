@@ -23,7 +23,7 @@ export const AdminNav: React.FC = () => {
             <input placeholder="Search" className="border bg-[#EFEFEF] w-[12rem] px-2 py-1 text-[0.75rem] outline-none rounded-sm" />
         </div>
         <div className='flex gap-4 items-center  justify-between max-md:justify-end w-[12rem]'>
-            <h3 className='font-semibold max-sm:text-sm max-md:hidden'>John Doe</h3>
+            <h3 className='font-semibold max-sm:text-sm max-md:hidden text-[0.9rem]'>John Doe</h3>
             <button title='User' className='flex gap-1 items-center'>
             <div className='w-[2.75rem] h-[2.75rem] max-sm:w-10 max-sm:h-10 bg-slate-100 rounded-full text-white items-center text-lg max-sm:text-base justify-center flex border'>
                 <FaUser />

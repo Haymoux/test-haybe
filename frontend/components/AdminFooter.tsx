@@ -11,7 +11,7 @@ import { IoLogoYoutube } from 'react-icons/io';
 
 export const AdminFooter: React.FC = () => {
   return (
-    <div className='py-5 px-20 max-md:p-6 bg-[#1B3664] max-lg:px-10 flex items-center justify-between text-white text-[0.8rem] '>
+    <div className='py-5 px-20 max-md:p-6 bg-[#1B3664] max-lg:px-10 flex items-center justify-between text-white text-[0.72rem] '>
         <div className='flex gap-8 max-md:gap-3'>
             <div className="flex items-center max-md:items-start max-md:flex-col justify-around max-md:justify-normal max-md:w-[5rem] gap-4 max-md:gap-2 font-normal">
                 <Link href={`/admin/creator-dashboard`}>Contact Us</Link>
