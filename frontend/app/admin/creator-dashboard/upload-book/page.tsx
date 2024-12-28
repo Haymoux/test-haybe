@@ -3,7 +3,7 @@
 import UploadIcon from '@/components/Icons/UploadIcon'
 import Link from 'next/link'
 import React from 'react'
-import { FiUpload } from 'react-icons/fi'
+// import { FiUpload } from 'react-icons/fi'
 import { TiArrowSortedDown } from 'react-icons/ti'
 
 export default function UploadBook() {
