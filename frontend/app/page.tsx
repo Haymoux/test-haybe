@@ -51,7 +51,7 @@ export default function CreatorDashboard() {
                             <h3 className="text-[0.92rem] text-center  max-md:text-[0.82rem] font-medium text-[#1A1A1A]">Write a Blog</h3>
                         </div>
                     </Link>
-                    <Link href={`/admin/creator-dashboard/upload-blog`} className="flex items-center justify-center  h-[160px] w-full bg-[#F7F7F7] shadow-sm">
+                    <Link href={`/admin/creator-dashboard/upload-HOS-assessment-questions`} className="flex items-center justify-center  h-[160px] w-full bg-[#F7F7F7] shadow-sm">
                         <div className="flex flex-col items-center gap-2 max-md:gap-2">
                             {/* <LuPenTool  className="text-5xl max-md:text-3xl"/> */}
                             <UploadIcon />
