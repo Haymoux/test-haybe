@@ -1,18 +1,21 @@
 'use client'
 
+import Image from 'next/image';
 import React from 'react'
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import { GoBell } from "react-icons/go";
+import waveEmoji from '../../assets/Vector-wave.png'
 import { IoMdArrowDropdown } from 'react-icons/io';
 
 interface NavBarProps {
   toggleSidebar: () => void;
   isSidebarOpen: boolean;
+  active: string;
 }
 
-export const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen }) => {
+export const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen, active }) => {
   return (
-    <div className='top-0 p-5 flex w-full items-center justify-between bg-[#FDFDFD] border-b'>
+    <div className='top-0 p-5 pl-6 flex w-full items-center justify-between bg-[#FDFDFD] border-b'>
       <div className='flex items-center w-full gap-16 max-sm:gap-2'>
         {/* Hamburger menu for mobile */}
         <button 
@@ -22,7 +25,47 @@ export const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen }) 
         >
           {isSidebarOpen ? <FaTimes /> : <FaBars />}
         </button>
-        <h2 className='text-[1.4rem] max-sm:text-[1.1rem] font-bold'>Hello John</h2>
+        { active === 'dashboard' && (
+            <div className='flex flex-col gap-0'>
+                <h3 className='flex items-center gap-2 text-[#003366] font-bold  text-[0.9rem]'>Hey there 
+                    <Image
+                        src={waveEmoji}
+                        alt='hello'
+                    />
+                </h3>
+                <h3 className='text-[#656565] font-normal text-[0.9rem]'>Welcome back, John</h3>
+            </div>
+        ) }
+        {
+            active === 'leads' && (
+                <h2 className='text-[#003366] font-bold text-[0.95rem]'>Leads & Opportunities</h2>
+            )
+        }
+        {
+            active === 'clients' && (
+                <h2 className='text-[#003366] font-bold text-[0.95rem]'>Clients & Accounts</h2>
+            )
+        }
+        {
+            active === 'ads' && (
+                <h2 className='text-[#003366] font-bold text-[0.95rem]'>Ad Sales & Campaign Management</h2>
+            )
+        }
+        {
+            active === 'pipeline' && (
+                <h2 className='text-[#003366] font-bold text-[0.95rem]'>Pipelines & Campaign management</h2>
+            )
+        }
+        {
+            active === 'reports' && (
+                <h2 className='text-[#003366] font-bold text-[0.95rem]'>Reports & Analytics</h2>
+            )
+        }
+        {
+            active === 'products' && (
+                <h2 className='text-[#003366] font-bold text-[0.95rem]'>Products</h2>
+            )
+        }
       </div>
       <div className='flex gap-4 items-center w-[20vw] max-sm:w-[30vw]'>
         <button title='notification'>

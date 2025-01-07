@@ -83,7 +83,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
               p-3 rounded transition-colors duration-200
             `}>
               <Link 
-                href={`/sales-rep-flow/i`}
+                href={`/sales-rep-flow/i/leads`}
                 className="flex items-center gap-[0.3rem] w-full"
                 onClick={() => {
                     toggleSidebar
@@ -103,7 +103,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
               p-3 rounded transition-colors duration-200
             `}>
               <Link 
-                href={`/sales-rep-flow/i`}
+                href={`/sales-rep-flow/i/clients`}
                 className="flex items-center gap-[0.3rem] w-full"
                 onClick={() => {
                     toggleSidebar
@@ -123,7 +123,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
               p-3 rounded transition-colors duration-200
             `}>
               <Link 
-                href={`/sales-rep-flow/i`}
+                href={`/sales-rep-flow/i/ads`}
                 className="flex items-center gap-[0.375rem] w-full"
                 onClick={() => {
                     toggleSidebar
@@ -143,7 +143,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
               p-3 rounded transition-colors duration-200
             `}>
               <Link 
-                href={`/sales-rep-flow/i`}
+                href={`/sales-rep-flow/i/pipeline`}
                 className="flex items-center gap-[0.375rem] w-full"
                 onClick={() => {
                     toggleSidebar
@@ -163,7 +163,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
               p-3 rounded transition-colors duration-200
             `}>
               <Link 
-                href={`/sales-rep-flow/i`}
+                href={`/sales-rep-flow/i/reports`}
                 className="flex items-center gap-[0.375rem] w-full"
                 onClick={() => {
                     toggleSidebar
@@ -183,7 +183,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
               p-3 rounded transition-colors duration-200
             `}>
               <Link 
-                href={`/sales-rep-flow/i`}
+                href={`/sales-rep-flow/i/products`}
                 className="flex items-center gap-[0.45rem] w-full"
                 onClick={() => {
                     toggleSidebar

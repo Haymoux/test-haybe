@@ -24,6 +24,7 @@ export default function RootLayout({
           <NavBar 
             toggleSidebar={toggleSidebar} 
             isSidebarOpen={isSidebarOpen} 
+            active={activePage}
           />
           <div className="h-[84vh] max-md:h-full overflow-y-auto">
             {children}
