@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import logo from '../../assets/hos logo (2).png'
 import { FaTimes } from 'react-icons/fa';
 import { CiGrid41, CiUser } from 'react-icons/ci';
@@ -13,9 +13,10 @@ import { GiAtomicSlashes } from 'react-icons/gi';
 interface SideBarProps {
   isOpen: boolean;
   toggleSidebar: () => void;
-  active: string
+  active: string;
+  setActive: Dispatch<SetStateAction<string>>;
 }
-export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active }) => {
+export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active, setActive }) => {
   return (
     <>
       {/* Dark overlay */}
@@ -64,73 +65,130 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active 
               <Link 
                 href={`/sales-rep-flow/i`} 
                 className="flex items-center gap-[0.3rem] w-full"
-                onClick={toggleSidebar}
+                onClick={() => {
+                    toggleSidebar
+                    setActive('dashboard')
+                }}
               >
                 <CiGrid41 size={18} />
                 <span>Dashboard</span>
               </Link>
             </div>
 
-            <div className="hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold p-3 rounded transition-colors duration-200">
+            <div className={`
+              ${active === 'leads' 
+                ? 'bg-[#E5EBF0] text-[#003366] font-semibold peer-hover:bg-white peer-hover:font-medium' 
+                : 'hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold'
+              } 
+              p-3 rounded transition-colors duration-200
+            `}>
               <Link 
-                href={`/super-admin/user-management`}
+                href={`/sales-rep-flow/i`}
                 className="flex items-center gap-[0.3rem] w-full"
-                onClick={toggleSidebar}
+                onClick={() => {
+                    toggleSidebar
+                    setActive('leads')
+                }}
               >
                 <CiUser size={20} />
                 <span>Leads & Opportunities</span>
               </Link>
             </div>
 
-            <div className="hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold p-3 rounded transition-colors duration-200">
+            <div className={`
+              ${active === 'clients' 
+                ? 'bg-[#E5EBF0] text-[#003366] font-semibold peer-hover:bg-white peer-hover:font-medium' 
+                : 'hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold'
+              } 
+              p-3 rounded transition-colors duration-200
+            `}>
               <Link 
-                href={`/super-admin/content-management`}
+                href={`/sales-rep-flow/i`}
                 className="flex items-center gap-[0.3rem] w-full"
-                onClick={toggleSidebar}
+                onClick={() => {
+                    toggleSidebar
+                    setActive('clients')
+                }}
               >
                 <CiUser size={20} />
                 <span>Clients & Accounts</span>
               </Link>
             </div>
 
-            <div className="hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold p-3 rounded transition-colors duration-200">
+            <div className={`
+              ${active === 'ads' 
+                ? 'bg-[#E5EBF0] text-[#003366] font-semibold peer-hover:bg-white peer-hover:font-medium' 
+                : 'hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold'
+              } 
+              p-3 rounded transition-colors duration-200
+            `}>
               <Link 
-                href={`/super-admin/advertisement-management`}
+                href={`/sales-rep-flow/i`}
                 className="flex items-center gap-[0.375rem] w-full"
-                onClick={toggleSidebar}
+                onClick={() => {
+                    toggleSidebar
+                    setActive('ads')
+                }}
               >
                 <GiAtomicSlashes size={18} />
                 <span>Ad Sales & Campaign Management</span>
               </Link>
             </div>
 
-            <div className="hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold p-3 rounded transition-colors duration-200">
+            <div className={`
+              ${active === 'pipeline' 
+                ? 'bg-[#E5EBF0] text-[#003366] font-semibold peer-hover:bg-white peer-hover:font-medium' 
+                : 'hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold'
+              } 
+              p-3 rounded transition-colors duration-200
+            `}>
               <Link 
-                href={`/super-admin/financials`}
+                href={`/sales-rep-flow/i`}
                 className="flex items-center gap-[0.375rem] w-full"
-                onClick={toggleSidebar}
+                onClick={() => {
+                    toggleSidebar
+                    setActive('pipeline')
+                }}
               >
                 <FiLayers size={18} />
                 <span>Pipelines & Campaign management</span>
               </Link>
             </div>
 
-            <div className="hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold p-3 rounded transition-colors duration-200">
+            <div className={`
+              ${active === 'reports' 
+                ? 'bg-[#E5EBF0] text-[#003366] font-semibold peer-hover:bg-white peer-hover:font-medium' 
+                : 'hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold'
+              } 
+              p-3 rounded transition-colors duration-200
+            `}>
               <Link 
-                href={`/super-admin/financials`}
+                href={`/sales-rep-flow/i`}
                 className="flex items-center gap-[0.375rem] w-full"
-                onClick={toggleSidebar}
+                onClick={() => {
+                    toggleSidebar
+                    setActive('reports')
+                }}
               >
                 <TbChartArcs3 size={18} />
                 <span>Reports & Analytics</span>
               </Link>
             </div>
 
-            <div className="hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold p-3 rounded transition-colors duration-200">
+            <div className={`
+              ${active === 'products' 
+                ? 'bg-[#E5EBF0] text-[#003366] font-semibold peer-hover:bg-white peer-hover:font-medium' 
+                : 'hover:bg-white hover:shadow-sm hover:text-[#003366] hover:font-semibold'
+              } 
+              p-3 rounded transition-colors duration-200
+            `}>
               <Link 
-                href={`/super-admin/financials`}
+                href={`/sales-rep-flow/i`}
                 className="flex items-center gap-[0.45rem] w-full"
-                onClick={toggleSidebar}
+                onClick={() => {
+                    toggleSidebar
+                    setActive('products')
+                }}
               >
                 <BsBoxSeam size={16} />
                 <span>Products</span>

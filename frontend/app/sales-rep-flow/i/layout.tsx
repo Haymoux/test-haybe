@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <main className="flex h-screen w-full font-inter">
       <div className="flex w-full">
-        <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} active={activePage} />
+        <SideBar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} active={activePage} setActive={setActivePage} />
         <div className="flex size-full flex-col">
           <NavBar 
             toggleSidebar={toggleSidebar} 
