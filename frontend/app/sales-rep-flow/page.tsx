@@ -121,7 +121,7 @@ export default function SRFLogin(): JSX.Element {
                                 <div className='flex justify-between items-center'>
                                         <div className='flex items-center gap-2'>
                                             <input type="checkbox" name="remember" id="remember" title='remember' className='w-4 h-4' />
-                                            <h3 className='text-[0.86rem]'>Remember me</h3>
+                                            <h3 className='text-[0.82rem]'>Remember me</h3>
                                         </div>
                                         <Link
                                             href={``} 
