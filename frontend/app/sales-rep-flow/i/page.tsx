@@ -2,11 +2,12 @@
 
 import { BiSpreadsheet } from "react-icons/bi";
 import { GiAtomicSlashes } from "react-icons/gi";
+import { HiOutlineUser } from "react-icons/hi2";
 
 export default function Dashboard() {
     return (
-     <div className="max-md:mx-5 gap-8 p-5 h-full bg-[#F1F0F2] flex items-center justify-center">
-        <div className="bg-white w-full h-full overflow-y-auto scroll-m-4 p-5">
+     <div className="max-md:mx-5 gap-8 p-5 overflow-auto bg-[#F1F0F2] flex items-center justify-center">
+        <div className="bg-white relative w-full scroll-m-4 p-5">
             <div className="flex w-full text-[0.75rem] mb-5 justify-between items-center">
                 <button className="px-6 py-2 rounded-md border border-[#003366] text-[#003366] font-semibold shadow-sm">Add new lead</button>
                 <div className="flex gap-4">
@@ -36,22 +37,197 @@ export default function Dashboard() {
 
                     </div>
                     <div className="h-full gap-3 w-full flex flex-col">
-                        <div className="h-[50%] w-full border">
-                            <div></div>
-                            <div></div>
-                            <div>
-                            <div className="w-full bg-gray-200 rounded-full h-2">
-                                <div 
-                                    className="bg-green-600 h-2 rounded-full transition-all duration-300"
-                                    style={{ width: `60%` }}
-                                />
+                        <div className="h-[50%] p-2 w-full rounded-md shadow-sm space-y-2 border">
+                            <div className="flex gap-2">
+                                <HiOutlineUser size={16} />
+                                <span className="text-[0.7rem] font-medium">Total number of leads for Individual sales</span>
+                            </div>
+                            <div className="h-[1px] border w-full"></div>
+                            <div className="flex flex-col space-y-12 pb-6" >
+                                <div className="w-full bg-[#F0F7FF] rounded-full h-2">
+                                    <div 
+                                        className="bg-[#003366] h-2 rounded-full transition-all duration-300"
+                                        style={{ width: `40%` }}
+                                    />
+                                    <span className="text-[0.6rem]">New lead - 34</span>
+                                </div>
+                                <div className="w-full bg-[#F0F7FF] rounded-full h-2">
+                                    <div 
+                                        className="bg-[#00FF66] h-2 rounded-full transition-all duration-300"
+                                        style={{ width: `55%` }}
+                                    />
+                                    <span className="text-[0.6rem]">Qualified - 34</span>
+                                </div>
+                                <div className="w-full bg-[#F0F7FF] rounded-full h-2">
+                                    <div 
+                                        className="bg-[#CA7CFF] h-2 rounded-full transition-all duration-300"
+                                        style={{ width: `68%` }}
+                                    />
+                                    <span className="text-[0.6rem]">Proposal sent - 34</span>
+                                </div>
+                                <div className="w-full bg-[#F0F7FF] rounded-full h-2">
+                                    <div 
+                                        className="bg-[#49E2FF] h-2 rounded-full transition-all duration-300"
+                                        style={{ width: `80%` }}
+                                    />
+                                    <span className="text-[0.6rem]">Closed - 34</span>
                                 </div>
                             </div>
                         </div>
-                        <div className="h-[50%] w-full border"></div>
+                        <div className="h-[50%] p-2 rounded-md shadow-sm w-full space-y-2 border">
+                            <div className="flex gap-2">
+                                <HiOutlineUser size={16} />
+                                <span className="text-[0.7rem] font-medium">Total number of leads for Enterprise client sales</span>
+                            </div>
+                            <div className="h-[1px] border w-full"></div>
+                            <div className="flex flex-col space-y-12 pb-6" >
+                                <div className="w-full bg-[#F0F7FF] rounded-full h-2">
+                                    <div 
+                                        className="bg-[#003366] h-2 rounded-full transition-all duration-300"
+                                        style={{ width: `40%` }}
+                                    />
+                                    <span className="text-[0.6rem]">New lead - 34</span>
+                                </div>
+                                <div className="w-full bg-[#F0F7FF] rounded-full h-2">
+                                    <div 
+                                        className="bg-[#00FF66] h-2 rounded-full transition-all duration-300"
+                                        style={{ width: `55%` }}
+                                    />
+                                    <span className="text-[0.6rem]">Qualified - 34</span>
+                                </div>
+                                <div className="w-full bg-[#F0F7FF] rounded-full h-2">
+                                    <div 
+                                        className="bg-[#CA7CFF] h-2 rounded-full transition-all duration-300"
+                                        style={{ width: `68%` }}
+                                    />
+                                    <span className="text-[0.6rem]">Proposal sent - 34</span>
+                                </div>
+                                <div className="w-full bg-[#F0F7FF] rounded-full h-2">
+                                    <div 
+                                        className="bg-[#49E2FF] h-2 rounded-full transition-all duration-300"
+                                        style={{ width: `80%` }}
+                                    />
+                                    <span className="text-[0.6rem]">Closed - 34</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="w-[70%] h-full border "></div>
+                <div className="w-[70%] h-full flex flex-col space-y-2 ">
+                    <h3 className="text-[#101828] text-[0.8rem] font-medium">Ad Campaign Overview - Top Ads</h3>
+                    <div className="p-2 flex rounded-md flex-col w-full border space-y-2 shadow-sm">
+                        <div className="flex gap-2">
+                            <GiAtomicSlashes size={18} />
+                            <span className="text-[0.8rem] font-medium">Coca cola campaign</span>
+                        </div>
+                        <div className="h-[1px] w-full border"></div>
+                        <div className="flex flex-col space-y-1">
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Client</span>
+                                <span className="text-[0.72rem] font-semibold">Coca cola</span>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Status</span>
+                                <div className="text-[0.6rem] bg-green-100 py-1 px-2 rounded-lg flex gap-1 items-center font-semibold">
+                                    <div className="h-1 w-1 rounded-full -mt-1 bg-green-500"></div>
+                                    <span className="text-green-500">Active</span>
+                                </div>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Spend</span>
+                                <span className="text-[0.72rem] font-semibold">$456</span>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Impressions</span>
+                                <span className="text-[0.72rem] font-semibold">8,456</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="p-2 flex rounded-md flex-col w-full border space-y-2 shadow-sm">
+                        <div className="flex gap-2">
+                            <GiAtomicSlashes size={18} />
+                            <span className="text-[0.8rem] font-medium">Coca cola campaign</span>
+                        </div>
+                        <div className="h-[1px] w-full border"></div>
+                        <div className="flex flex-col space-y-1">
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Client</span>
+                                <span className="text-[0.72rem] font-semibold">Coca cola</span>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Status</span>
+                                <div className="text-[0.6rem] bg-green-100 py-1 px-2 rounded-lg flex gap-1 items-center font-semibold">
+                                    <div className="h-1 w-1 rounded-full -mt-1 bg-green-500"></div>
+                                    <span className="text-green-500">Active</span>
+                                </div>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Spend</span>
+                                <span className="text-[0.72rem] font-semibold">$456</span>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Impressions</span>
+                                <span className="text-[0.72rem] font-semibold">8,456</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="p-2 flex rounded-md flex-col w-full border space-y-2 shadow-sm">
+                        <div className="flex gap-2">
+                            <GiAtomicSlashes size={18} />
+                            <span className="text-[0.8rem] font-medium">Coca cola campaign</span>
+                        </div>
+                        <div className="h-[1px] w-full border"></div>
+                        <div className="flex flex-col space-y-1">
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Client</span>
+                                <span className="text-[0.72rem] font-semibold">Coca cola</span>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Status</span>
+                                <div className="text-[0.6rem] bg-green-100 py-1 px-2 rounded-lg flex gap-1 items-center font-semibold">
+                                    <div className="h-1 w-1 rounded-full -mt-1 bg-green-500"></div>
+                                    <span className="text-green-500">Active</span>
+                                </div>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Spend</span>
+                                <span className="text-[0.72rem] font-semibold">$456</span>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Impressions</span>
+                                <span className="text-[0.72rem] font-semibold">8,456</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="p-2 flex rounded-md flex-col w-full border space-y-2 shadow-sm">
+                        <div className="flex gap-2">
+                            <GiAtomicSlashes size={18} />
+                            <span className="text-[0.8rem] font-medium">Coca cola campaign</span>
+                        </div>
+                        <div className="h-[1px] w-full border"></div>
+                        <div className="flex flex-col space-y-1">
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Client</span>
+                                <span className="text-[0.72rem] font-semibold">Coca cola</span>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Status</span>
+                                <div className="text-[0.6rem] bg-green-100 py-1 px-2 rounded-lg flex gap-1 items-center font-semibold">
+                                    <div className="h-1 w-1 rounded-full -mt-1 bg-green-500"></div>
+                                    <span className="text-green-500">Active</span>
+                                </div>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Spend</span>
+                                <span className="text-[0.72rem] font-semibold">$456</span>
+                            </div>
+                            <div className="flex w-full justify-between">
+                                <span className="text-[#727376] text-[0.7rem]">Impressions</span>
+                                <span className="text-[0.72rem] font-semibold">8,456</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="w-full h-full border "></div>
             </div>
         </div>
