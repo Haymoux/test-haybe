@@ -26,7 +26,7 @@ export default function RootLayout({
             isSidebarOpen={isSidebarOpen} 
             active={activePage}
           />
-          <div className="h-[84vh] max-md:h-full overflow-y-auto">
+          <div className="h-[87vh] max-md:h-full overflow-y-auto">
             {children}
           </div>
         </div>
