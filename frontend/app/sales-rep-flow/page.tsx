@@ -12,7 +12,7 @@ import lockLogo from '../../assets/lock.png'
 import hideEye from '../../assets/eye-slash.png'
 import googleLogo from '../../assets/image 37-google.png'
 import Link from 'next/link'
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 import { JSX, useState } from 'react'
 
 

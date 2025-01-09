@@ -3,12 +3,24 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import QuestionsAccordion from '@/components/Accordion/QuestionsAccordion';
+import axios from 'axios';
+import { useAuth } from '@/lib/auth-context';
 
 interface Question {
   id: number;
   question: string;
   answers: string[];
   correctAnswers: number[];
+}
+
+interface ApiQuestion {
+  question: string;
+  type: string;
+  category: string;
+  answer: string | string[];
+  options: {
+    [key: string]: string;
+  };
 }
 
 interface CustomInputProps {
@@ -50,8 +62,10 @@ const CustomInput: React.FC<CustomInputProps> = ({ type, checked, onChange, clas
     </div>
   );
 
+  const alphabet = ['a', 'b', 'c', 'd'];
+
 export default function UploadHOSAssessmentQuestions() {
-  // Previous state declarations remain the same...
+      const { token } = useAuth()
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<Question>({
     id: 1,
@@ -65,8 +79,33 @@ export default function UploadHOSAssessmentQuestions() {
   const [questionToDelete, setQuestionToDelete] = useState<number | null>(null);
   const [isMultipleAnswer, setIsMultipleAnswer] = useState(false);
   const [editingQuestion, setEditingQuestion] = useState<Question | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  // Previous handlers remain the same...
+
+
+  const transformQuestionForApi = (question: Question): ApiQuestion => {
+    const options: { [key: string]: string } = {};
+    question.answers.forEach((answer, index) => {
+      if (answer.trim()) {
+        options[alphabet[index]] = answer;
+      }
+    });
+  
+    // Convert multiple answers into a comma-separated string
+    const answer = question.correctAnswers
+      .map(index => alphabet[index])
+      .join(',');
+  
+    return {
+      question: question.question,
+      type: question.correctAnswers.length > 1 ? 'multiple' : 'options',
+      category: question.correctAnswers.length > 1 ? 'multiple' : 'General',
+      answer, // Now always a string
+      options
+    };
+  };
+
   const handleQuestionChange = (value: string) => {
     setCurrentQuestion(prev => ({
       ...prev,
@@ -116,66 +155,57 @@ export default function UploadHOSAssessmentQuestions() {
     setIsMultipleAnswer(question.correctAnswers.length > 1);
   };
 
-  const handleSave = () => {
-    // Check if the question is empty/unchanged from initial state
-    const isQuestionEmpty = 
-      currentQuestion.question.trim() === '' && 
-      currentQuestion.answers.every(answer => answer.trim() === '') &&
-      currentQuestion.correctAnswers.length === 0;
-  
-    if (isQuestionEmpty) {
-      alert('Please add a question before saving');
-      return;
-    }
-  
-    // Validate that we have a question
+  const handleSave = async () => {
+    // Validation checks
     if (!currentQuestion.question.trim()) {
       alert('Please enter a question');
       return;
     }
-  
-    // Validate that we have at least one answer
+
     if (!currentQuestion.answers.some(answer => answer.trim())) {
       alert('Please enter at least one answer');
       return;
     }
-  
-    // Validate that we have selected at least one correct answer
+
     if (currentQuestion.correctAnswers.length === 0) {
       alert('Please select at least one correct answer');
       return;
     }
-  
-    // Check if this question already exists in the questions array
-    const questionExists = questions.some(q => 
-      q.id === currentQuestion.id && !editingQuestion
-    );
-  
-    if (questionExists) {
-      alert('This question has already been saved. Click "Add question" to create a new question.');
-      return;
-    }
-  
-    // If editing, update the existing question
-    if (editingQuestion) {
-      setQuestions(prev => prev.map(q => 
-        q.id === editingQuestion.id ? currentQuestion : q
-      ));
-      setEditingQuestion(null);
-    } else {
-      // Generate a new ID based on the highest existing ID + 1
-      const newId = Math.max(0, ...questions.map(q => q.id)) + 1;
-      const newQuestion = {
-        ...currentQuestion,
-        id: newId
-      };
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const apiQuestion = transformQuestionForApi(currentQuestion);
       
-      // Add the current question to the questions array
-      setQuestions(prev => [...prev, newQuestion]);
+      console.log(apiQuestion);
+      const response = await axios.post(
+        'https://api.hosoptima.com/api/v1/question',
+        apiQuestion,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` 
+          }
+        }
+      );
+
+      if (response.status === 200 || response.status === 201) {
+        setShowSuccessModal(true);
+        // Clear the current question
+        // setCurrentQuestion({
+        //   id: questions.length + 1,
+        //   question: '',
+        //   answers: ['', '', '', ''],
+        //   correctAnswers: []
+        // });
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred while saving the question');
+      alert('Failed to save question. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
-  
-    // Show success modal
-    setShowSuccessModal(true);
   };
   
   const handleDelete = (id: number) => {
@@ -250,9 +280,12 @@ export default function UploadHOSAssessmentQuestions() {
           <div className="flex flex-col sm:flex-row gap-3 sm:justify-end mb-8">
             <button
               onClick={handleSave}
-              className="px-6 py-2 bg-[#1B3664] text-white rounded-md hover:bg-blue-800 text-sm sm:text-[0.88rem] transition-colors duration-300"
+              disabled={isLoading}
+              className={`px-6 py-2 bg-[#1B3664] text-white rounded-md hover:bg-blue-800 text-sm sm:text-[0.88rem] transition-colors duration-300 ${
+                isLoading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
             >
-              Save
+              {isLoading ? 'Saving...' : 'Save'}
             </button>
             <button
               onClick={() => setShowQuestionType(true)}
@@ -261,6 +294,11 @@ export default function UploadHOSAssessmentQuestions() {
               + Add question
             </button>
           </div>
+            {error && (
+              <div className="text-red-500 mt-2 text-sm">
+                {error}
+              </div>
+            )}
 
           {/* Previous Questions List */}
           {/* {questions.length > 0 && (
@@ -332,14 +370,6 @@ export default function UploadHOSAssessmentQuestions() {
             <p className="mb-4 text-sm sm:text-base">Please Select the option below</p>
             <div className="space-y-3 mb-4">
               <button className="flex w-full items-center gap-3 p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors duration-300" onClick={() => setIsMultipleAnswer(false)}>
-                {/* <input
-                  type="radio"
-                  name="questionType"
-                  checked={!isMultipleAnswer}
-                  title='answer'
-                  onChange={() => setIsMultipleAnswer(false)}
-                  className="w-4 h-4 sm:w-5 sm:h-5"
-                  /> */}
                 <CustomInput 
                     type='radio'
                     checked={!isMultipleAnswer}
@@ -349,14 +379,6 @@ export default function UploadHOSAssessmentQuestions() {
                 <span className="text-sm font-medium sm:text-base">Single answer</span>
               </button>
               <button className="flex items-center w-full gap-3 p-3 bg-gray-50 rounded-md cursor-pointer hover:bg-gray-100 transition-colors duration-300" onClick={() => setIsMultipleAnswer(true)}>
-                {/* <input
-                  type="radio"
-                  name="questionType"
-                  checked={isMultipleAnswer}
-                  onChange={() => setIsMultipleAnswer(true)}
-                  title='answer'
-                  className="w-4 h-4 sm:w-5 sm:h-5"
-                  /> */}
                 <CustomInput 
                     type='radio'
                     checked={isMultipleAnswer}

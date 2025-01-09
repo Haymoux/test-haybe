@@ -66,8 +66,8 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
                 href={`/sales-rep-flow/i`} 
                 className="flex items-center gap-[0.3rem] w-full"
                 onClick={() => {
-                    toggleSidebar
-                    setActive('dashboard')
+                    toggleSidebar();
+                    setActive('dashboard');
                 }}
               >
                 <CiGrid41 size={18} />
@@ -86,7 +86,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
                 href={`/sales-rep-flow/i/leads`}
                 className="flex items-center gap-[0.3rem] w-full"
                 onClick={() => {
-                    toggleSidebar
+                    toggleSidebar();
                     setActive('leads')
                 }}
               >
@@ -106,7 +106,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
                 href={`/sales-rep-flow/i/clients`}
                 className="flex items-center gap-[0.3rem] w-full"
                 onClick={() => {
-                    toggleSidebar
+                    toggleSidebar();
                     setActive('clients')
                 }}
               >
@@ -126,7 +126,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
                 href={`/sales-rep-flow/i/ads`}
                 className="flex items-center gap-[0.375rem] w-full"
                 onClick={() => {
-                    toggleSidebar
+                    toggleSidebar();
                     setActive('ads')
                 }}
               >
@@ -146,7 +146,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
                 href={`/sales-rep-flow/i/pipeline`}
                 className="flex items-center gap-[0.375rem] w-full"
                 onClick={() => {
-                    toggleSidebar
+                    toggleSidebar();
                     setActive('pipeline')
                 }}
               >
@@ -166,7 +166,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
                 href={`/sales-rep-flow/i/reports`}
                 className="flex items-center gap-[0.375rem] w-full"
                 onClick={() => {
-                    toggleSidebar
+                    toggleSidebar();
                     setActive('reports')
                 }}
               >
@@ -186,7 +186,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isOpen, toggleSidebar, active,
                 href={`/sales-rep-flow/i/products`}
                 className="flex items-center gap-[0.45rem] w-full"
                 onClick={() => {
-                    toggleSidebar
+                    toggleSidebar();
                     setActive('products')
                 }}
               >

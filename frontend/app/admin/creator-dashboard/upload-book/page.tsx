@@ -1,7 +1,9 @@
 'use client'
 
 import UploadIcon from '@/components/Icons/UploadIcon';
+import { useAuth } from '@/lib/auth-context';
 import axios from 'axios';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState, useRef } from 'react';
 import { TiArrowSortedDown } from 'react-icons/ti';
@@ -22,10 +24,12 @@ interface BookData {
 }
 
 export default function UploadBook() {
+    const { token } = useAuth()
+  
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [showStatusDropdown, setShowStatusDropdown] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -51,18 +55,23 @@ export default function UploadBook() {
     const { name, value } = e.target;
     if (name.includes('.')) {
       const [parent, child] = name.split('.');
-      setBookData(prev => ({
-        ...prev,
-        [parent]: {
-          ...prev[parent as keyof typeof prev],
-          [child]: value
+      setBookData(prev => {
+        if (parent === 'book') {
+          return {
+            ...prev,
+            book: {
+              ...prev.book,
+              [child]: value
+            }
+          };
         }
-      }));
+        return prev;
+      });
     } else {
       setBookData(prev => ({
         ...prev,
         [name]: name === 'price' ? parseFloat(value) || 0 : value
-      }));
+      }));  
     }
   };
 
@@ -82,13 +91,13 @@ export default function UploadBook() {
     // Validate file type
     const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
     if (!validImageTypes.includes(file.type)) {
-      setError('Please upload a valid image file (JPEG, PNG, GIF, or WebP)');
+      setErrorMessage('Please upload a valid image file (JPEG, PNG, GIF, or WebP)');
       return;
     }
 
     // Validate file size (5MB limit)
     if (file.size > 5 * 1024 * 1024) {
-      setError('Image size should be less than 5MB');
+      setErrorMessage('Image size should be less than 5MB');
       return;
     }
 
@@ -96,7 +105,7 @@ export default function UploadBook() {
     const preview = URL.createObjectURL(file);
     setPreviewUrl(preview);
     setUploadedFile(file);
-    setError(null);
+    setErrorMessage(null);
 
     // Clean up the preview URL when component unmounts
     return () => {
@@ -115,7 +124,6 @@ export default function UploadBook() {
         {
           headers: {
             'Content-Type': 'multipart/form-data',
-            // Authorization: `Bearer ${token}` // Commented out as requested
           },
           onUploadProgress: (progressEvent) => {
             const progress = progressEvent.total
@@ -126,16 +134,17 @@ export default function UploadBook() {
         }
       );
 
-      return response.data.url; // Assuming the API returns the file URL
+      return response.data.url; 
     } catch (error) {
       throw new Error('Failed to upload image');
+      console.error(error);
     }
   };
 
   const handleSubmit = async () => {
     try {
       setIsSubmitting(true);
-      setError(null);
+      setErrorMessage(null);
 
       // Validation
       if (!uploadedFile) {
@@ -172,7 +181,7 @@ export default function UploadBook() {
         {
           headers: {
             'Content-Type': 'application/json',
-            // Authorization: `Bearer ${token}` // Commented out as requested
+            Authorization: `Bearer ${token}` 
           }
         }
       );
@@ -182,7 +191,7 @@ export default function UploadBook() {
         // Optionally redirect or clear form
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to upload book');
+      setErrorMessage(err instanceof Error ? err.message : 'Failed to upload book');
     } finally {
       setIsSubmitting(false);
       setUploadProgress(0);
@@ -266,7 +275,7 @@ export default function UploadBook() {
           />
           {previewUrl ? (
             <div className="relative w-full h-full">
-              <img
+              <Image
                 src={previewUrl}
                 alt="Book cover preview"
                 className="object-contain w-full h-full"
@@ -328,9 +337,9 @@ export default function UploadBook() {
           </div>
         </div>
 
-        {error && (
+        {errorMessage && (
           <div className="text-red-500 text-sm mb-4">
-            {error}
+            {errorMessage}
           </div>
         )}
 

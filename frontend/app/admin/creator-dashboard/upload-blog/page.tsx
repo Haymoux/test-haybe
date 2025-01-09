@@ -1,6 +1,7 @@
 'use client'
 
 import TextEditor from '@/helper/TextEditor';
+import { useAuth } from '@/lib/auth-context';
 import axios from 'axios';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -17,6 +18,7 @@ interface BlogPost {
 }
 
 export default function UploadBlog() {
+  const { token } = useAuth()
   const [blogData, setBlogData] = useState<BlogPost>({
     title: '',
     description: '',
@@ -70,7 +72,7 @@ export default function UploadBlog() {
         {
           headers: {
             'Content-Type': 'application/json',
-            // Authorization: `Bearer ${token}` // Commented out as requested
+            'Authorization': `Bearer ${token}` 
           }
         }
       );
