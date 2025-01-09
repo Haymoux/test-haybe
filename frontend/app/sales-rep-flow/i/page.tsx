@@ -1,6 +1,7 @@
 // import React from 'react'
 
 import { BiSpreadsheet } from "react-icons/bi";
+import { FaUser } from "react-icons/fa";
 import { GiAtomicSlashes } from "react-icons/gi";
 import { HiOutlineUser } from "react-icons/hi2";
 
@@ -129,7 +130,7 @@ export default function Dashboard() {
                             <div className="flex w-full justify-between">
                                 <span className="text-[#727376] text-[0.7rem]">Status</span>
                                 <div className="text-[0.6rem] bg-green-100 py-1 px-2 rounded-lg flex gap-1 items-center font-semibold">
-                                    <div className="h-1 w-1 rounded-full -mt-1 bg-green-500"></div>
+                                    <div className="h-1 w-1 rounded-full -mt-0.5 bg-green-500"></div>
                                     <span className="text-green-500">Active</span>
                                 </div>
                             </div>
@@ -157,7 +158,7 @@ export default function Dashboard() {
                             <div className="flex w-full justify-between">
                                 <span className="text-[#727376] text-[0.7rem]">Status</span>
                                 <div className="text-[0.6rem] bg-green-100 py-1 px-2 rounded-lg flex gap-1 items-center font-semibold">
-                                    <div className="h-1 w-1 rounded-full -mt-1 bg-green-500"></div>
+                                    <div className="h-1 w-1 rounded-full -mt-0.5 bg-green-500"></div>
                                     <span className="text-green-500">Active</span>
                                 </div>
                             </div>
@@ -185,7 +186,7 @@ export default function Dashboard() {
                             <div className="flex w-full justify-between">
                                 <span className="text-[#727376] text-[0.7rem]">Status</span>
                                 <div className="text-[0.6rem] bg-green-100 py-1 px-2 rounded-lg flex gap-1 items-center font-semibold">
-                                    <div className="h-1 w-1 rounded-full -mt-1 bg-green-500"></div>
+                                    <div className="h-1 w-1 rounded-full -mt-0.5 bg-green-500"></div>
                                     <span className="text-green-500">Active</span>
                                 </div>
                             </div>
@@ -213,7 +214,7 @@ export default function Dashboard() {
                             <div className="flex w-full justify-between">
                                 <span className="text-[#727376] text-[0.7rem]">Status</span>
                                 <div className="text-[0.6rem] bg-green-100 py-1 px-2 rounded-lg flex gap-1 items-center font-semibold">
-                                    <div className="h-1 w-1 rounded-full -mt-1 bg-green-500"></div>
+                                    <div className="h-1 w-1 rounded-full -mt-0.5 bg-green-500"></div>
                                     <span className="text-green-500">Active</span>
                                 </div>
                             </div>
@@ -228,7 +229,159 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className="w-full h-full border "></div>
+                <div className="w-full h-full flex flex-col space-y-2">
+                    <h3 className="text-[#101828] text-[0.8rem] font-medium">My Activities</h3>
+                    <div className="w-full h-full flex flex-col space-y-1">
+                        <div className="flex space-x-2 text-[0.78rem] text-[#717B8C]">
+                            <button className={`px-3 py-2`}>Recent</button>
+                            <button className={`px-3 py-2`}>Upcoming</button>
+                            <button className={`px-3 py-2`}>Completed</button>
+                        </div>
+                        <div className="border p-4 flex items-center space-x-3 rounded-md shadow-md">
+                            <div className="flex flex-col space-y-1">
+                                <div className="flex items-center bg-[#E1F0FF] justify-center px-2 py-1 gap-1 rounded-xl">
+                                    <div className="w-1 h-1 rounded-full bg-[#003366]"></div>
+                                    <span className="text-[0.62rem] text-[#003366]">Call</span>
+                                </div>
+                                <h3  className="text-[0.78rem] font-semibold">09:30 AM</h3>
+                                <h3  className="text-[0.6rem] font-light">30 mins ago</h3>
+                            </div>
+                            <div className="w-[0.1px] h-[62px] border"></div>
+                            <div className="flex flex-col w-[36%] space-y-1">
+                                <div className="flex -space-x-3">
+                                    <div className='w-9 h-9 max-sm:w-10 max-sm:h-10 bg-slate-100 rounded-full text-white items-center text-2xl max-sm:text-lg justify-center flex border'>
+                                     <FaUser />
+                                    </div>
+                                    <div className='w-9 h-9 max-sm:w-10 max-sm:h-10 bg-slate-100 rounded-full text-white items-center text-2xl max-sm:text-lg justify-center flex border'>
+                                     <FaUser />
+                                    </div>
+                                </div>
+                                <span className="text-[0.67rem] font-medium">Vivian, Sarah</span>
+                            </div>
+                            <div className="w-[0.1px] h-[62px] border"></div>
+                            <div className="flex flex-col space-y-1">
+                                <h3  className="text-[0.7rem] font-light">Thursday</h3> 
+                                <h3  className="text-[0.78rem] font-semibold">12 June, 2023</h3>
+                                <div className="flex items-center bg-[#ECFDF3] justify-center px-2 py-1 gap-1 rounded-xl">
+                                    <div className="w-1 h-1 rounded-full bg-[#12B76A]"></div>
+                                    <span className="text-[0.62rem] text-[#12B76A]">Completed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="border p-4 flex items-center space-x-3 rounded-md shadow-md">
+                            <div className="flex flex-col space-y-1">
+                                <div className="flex items-center bg-[#E1F0FF] justify-center px-2 py-1 gap-1 rounded-xl">
+                                    <div className="w-1 h-1 rounded-full bg-[#003366]"></div>
+                                    <span className="text-[0.62rem] text-[#003366]">Email</span>
+                                </div>
+                                <h3  className="text-[0.78rem] font-semibold">09:30 AM</h3>
+                                <h3  className="text-[0.6rem] font-light">30 mins ago</h3>
+                            </div>
+                            <div className="w-[0.1px] h-[62px] border"></div>
+                            <div className="flex flex-col w-[36%] space-y-1">
+                                <div className="flex -space-x-3">
+                                    <div className='w-9 h-9 max-sm:w-10 max-sm:h-10 bg-slate-100 rounded-full text-white items-center text-2xl max-sm:text-lg justify-center flex border'>
+                                     <FaUser />
+                                    </div>
+                                </div>
+                                <span className="text-[0.67rem] font-medium">To: Vivian</span>
+                            </div>
+                            <div className="w-[0.1px] h-[62px] border"></div>
+                            <div className="flex flex-col space-y-1">
+                                <h3  className="text-[0.7rem] font-light">Thursday</h3> 
+                                <h3  className="text-[0.78rem] font-semibold">12 June, 2023</h3>
+                                <div className="flex items-center bg-[#FDF6E8] justify-center px-2 py-1 gap-1 rounded-xl">
+                                    <div className="w-1 h-1 rounded-full bg-[#FFAA00]"></div>
+                                    <span className="text-[0.62rem] text-[#FFAA00]">Follow up</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="border p-4 flex items-center space-x-3 rounded-md shadow-md">
+                            <div className="flex flex-col space-y-1">
+                                <div className="flex items-center bg-[#E1F0FF] justify-center px-2 py-1 gap-1 rounded-xl">
+                                    <div className="w-1 h-1 rounded-full bg-[#003366]"></div>
+                                    <span className="text-[0.62rem] text-[#003366]">Proposal</span>
+                                </div>
+                                <h3  className="text-[0.78rem] font-semibold">09:30 AM</h3>
+                                <h3  className="text-[0.6rem] font-light">30 mins ago</h3>
+                            </div>
+                            <div className="w-[0.1px] h-[62px] border"></div>
+                            <div className="flex flex-col w-[36%] space-y-1">
+                                <div className="flex -space-x-3">
+                                    <div className='w-9 h-9 max-sm:w-10 max-sm:h-10 bg-slate-100 rounded-full text-white items-center text-2xl max-sm:text-lg justify-center flex border'>
+                                     <FaUser />
+                                    </div>
+                                </div>
+                                <span className="text-[0.67rem] font-medium">To: Vivian</span>
+                            </div>
+                            <div className="w-[0.1px] h-[62px] border"></div>
+                            <div className="flex flex-col space-y-1">
+                                <h3  className="text-[0.7rem] font-light">Thursday</h3> 
+                                <h3  className="text-[0.78rem] font-semibold">12 June, 2023</h3>
+                                <div className="flex items-center bg-[#FFF4F6] justify-center px-2 py-1 gap-1 rounded-xl">
+                                    <div className="w-1 h-1 rounded-full bg-[#F43D54]"></div>
+                                    <span className="text-[0.62rem] text-[#F43D54]">Urgent</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="border p-4 flex items-center space-x-3 rounded-md shadow-md">
+                            <div className="flex flex-col space-y-1">
+                                <div className="flex items-center bg-[#E1F0FF] justify-center px-2 py-1 gap-1 rounded-xl">
+                                    <div className="w-1 h-1 rounded-full bg-[#003366]"></div>
+                                    <span className="text-[0.62rem] text-[#003366]">Proposal</span>
+                                </div>
+                                <h3  className="text-[0.78rem] font-semibold">09:30 AM</h3>
+                                <h3  className="text-[0.6rem] font-light">30 mins ago</h3>
+                            </div>
+                            <div className="w-[0.1px] h-[62px] border"></div>
+                            <div className="flex flex-col w-[36%] space-y-1">
+                                <div className="flex -space-x-3">
+                                    <div className='w-9 h-9 max-sm:w-10 max-sm:h-10 bg-slate-100 rounded-full text-white items-center text-2xl max-sm:text-lg justify-center flex border'>
+                                     <FaUser />
+                                    </div>
+                                </div>
+                                <span className="text-[0.67rem] font-medium">To: Vivian</span>
+                            </div>
+                            <div className="w-[0.1px] h-[62px] border"></div>
+                            <div className="flex flex-col space-y-1">
+                                <h3  className="text-[0.7rem] font-light">Thursday</h3> 
+                                <h3  className="text-[0.78rem] font-semibold">12 June, 2023</h3>
+                                <div className="flex items-center bg-[#FFF4F6] justify-center px-2 py-1 gap-1 rounded-xl">
+                                    <div className="w-1 h-1 rounded-full bg-[#F43D54]"></div>
+                                    <span className="text-[0.62rem] text-[#F43D54]">Urgent</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="border p-4 flex items-center space-x-3 rounded-md shadow-md">
+                            <div className="flex flex-col space-y-1">
+                                <div className="flex items-center bg-[#E1F0FF] justify-center px-2 py-1 gap-1 rounded-xl">
+                                    <div className="w-1 h-1 rounded-full bg-[#003366]"></div>
+                                    <span className="text-[0.62rem] text-[#003366]">Proposal</span>
+                                </div>
+                                <h3  className="text-[0.78rem] font-semibold">09:30 AM</h3>
+                                <h3  className="text-[0.6rem] font-light">30 mins ago</h3>
+                            </div>
+                            <div className="w-[0.1px] h-[62px] border"></div>
+                            <div className="flex flex-col w-[36%] space-y-1">
+                                <div className="flex -space-x-3">
+                                    <div className='w-9 h-9 max-sm:w-10 max-sm:h-10 bg-slate-100 rounded-full text-white items-center text-2xl max-sm:text-lg justify-center flex border'>
+                                     <FaUser />
+                                    </div>
+                                </div>
+                                <span className="text-[0.67rem] font-medium">To: Vivian</span>
+                            </div>
+                            <div className="w-[0.1px] h-[62px] border"></div>
+                            <div className="flex flex-col space-y-1">
+                                <h3  className="text-[0.7rem] font-light">Thursday</h3> 
+                                <h3  className="text-[0.78rem] font-semibold">12 June, 2023</h3>
+                                <div className="flex items-center bg-[#FFF4F6] justify-center px-2 py-1 gap-1 rounded-xl">
+                                    <div className="w-1 h-1 rounded-full bg-[#F43D54]"></div>
+                                    <span className="text-[0.62rem] text-[#F43D54]">Urgent</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>   
