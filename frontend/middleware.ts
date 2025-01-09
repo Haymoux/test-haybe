@@ -54,12 +54,12 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
-  const isCreatorDashboardPath = pathname.startsWith('/admin/creator-dashboard')
+//   const isCreatorDashboardPath = pathname.startsWith('/admin/creator-dashboard')
   
   // If it's a creator dashboard path, allow access
-  if (isCreatorDashboardPath) {
-    return NextResponse.next()
-  }
+//   if (isCreatorDashboardPath) {
+//     return NextResponse.next()
+//   }
 
   // Handle protected API routes
   if (isProtectedApiPath) {
