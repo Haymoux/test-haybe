@@ -17,7 +17,12 @@ import {
   FaSuperscript
 } from 'react-icons/fa';
 
-const TextEditor: React.FC = () => {
+interface TextEditorProps {
+  onContentChange?: (content: string) => void;
+}
+
+const TextEditor: React.FC<TextEditorProps> = ({ onContentChange }) => {
+  
   const editorRef = useRef<HTMLDivElement>(null);
   const [isEmpty, setIsEmpty] = useState(true);
   const [activeFormats, setActiveFormats] = useState({
@@ -70,7 +75,9 @@ const TextEditor: React.FC = () => {
   // Handle input events to check if the editor is empty
   const handleInput = () => {
     if (editorRef.current) {
-      setIsEmpty(editorRef.current.textContent?.trim() === '');
+      const content = editorRef.current.textContent?.trim() || '';
+      setIsEmpty(content === '');
+      onContentChange?.(content);
     }
   };
 
@@ -87,6 +94,7 @@ const TextEditor: React.FC = () => {
       setIsEmpty(true);
     }
   };
+
 
   return (
     <div className="bg-white p-4 rounded-md shadow-md w-full max-w-xl mx-auto">
