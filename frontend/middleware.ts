@@ -29,7 +29,7 @@ const routeConfig = {
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
-  const isAuthenticated = request.cookies.get('auth-token')
+  const isAuthenticated = request.cookies.get('token')
   const userRole = request.cookies.get('user-role')?.value || 'user'
   
   // Check if the path matches any protected patterns
@@ -50,8 +50,8 @@ export function middleware(request: NextRequest) {
   )
 
   // Redirect authenticated users away from public auth pages
-  if (isAuthenticated && pathname.match(/^\/login|^\/register/) && pathname !== '/') {
-    return NextResponse.redirect(new URL('/dashboard', request.url))
+  if (isAuthenticated) {
+    return NextResponse.redirect(new URL('/admin/creator-dashboard', request.url))
   }
 
 //   const isCreatorDashboardPath = pathname.startsWith('/admin/creator-dashboard')
