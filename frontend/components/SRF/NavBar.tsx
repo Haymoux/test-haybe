@@ -6,6 +6,7 @@ import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import { GoBell } from "react-icons/go";
 import waveEmoji from '../../assets/Vector-wave.png'
 import { IoMdArrowDropdown } from 'react-icons/io';
+import { useAuth } from '@/lib/auth-context';
 
 interface NavBarProps {
   toggleSidebar: () => void;
@@ -14,6 +15,9 @@ interface NavBarProps {
 }
 
 export const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen, active }) => {
+
+    const { user } = useAuth()
+
   return (
     <div className='top-0 p-5 pl-6 flex w-full items-center justify-between bg-[#FDFDFD] border-b'>
       <div className='flex items-center w-full gap-16 max-sm:gap-2'>
@@ -33,7 +37,7 @@ export const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen, ac
                         alt='hello'
                     />
                 </h3>
-                <h3 className='text-[#656565] font-normal text-[0.9rem]'>Welcome back, John</h3>
+                <h3 className='text-[#656565] font-normal text-[0.9rem]'>Welcome back, {user?.firstName}</h3>
             </div>
         ) }
         {
@@ -75,7 +79,7 @@ export const NavBar: React.FC<NavBarProps> = ({ toggleSidebar, isSidebarOpen, ac
           <div className='w-10 h-10 max-sm:w-10 max-sm:h-10 bg-slate-100 rounded-full text-white items-center text-2xl max-sm:text-lg justify-center flex border'>
             <FaUser />
           </div>
-            <h3 className='font-semibold mr-4 ml-2 text-[0.84rem] max-sm:text-sm'>John Doe</h3>
+            <h3 className='font-semibold mr-4 ml-2 text-[0.84rem] max-sm:text-sm'>{user?.firstName} {user?.lastName}</h3>
           <div>
             <IoMdArrowDropdown />
           </div>

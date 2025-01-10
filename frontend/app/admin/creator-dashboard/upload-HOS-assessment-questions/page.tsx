@@ -65,7 +65,7 @@ const CustomInput: React.FC<CustomInputProps> = ({ type, checked, onChange, clas
   const alphabet = ['a', 'b', 'c', 'd'];
 
 export default function UploadHOSAssessmentQuestions() {
-      const { token } = useAuth()
+  const { token } = useAuth()
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<Question>({
     id: 1,
