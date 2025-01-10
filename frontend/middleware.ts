@@ -56,7 +56,7 @@ export function middleware(request: NextRequest) {
 
 //   const isCreatorDashboardPath = pathname.startsWith('/admin/creator-dashboard')
   
-  // If it's a creator dashboard path, allow access
+  // If it's a creator dashboard path, allow access if not, don't
 //   if (isCreatorDashboardPath) {
 //     return NextResponse.next()
 //   }
